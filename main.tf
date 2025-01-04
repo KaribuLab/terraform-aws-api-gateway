@@ -44,6 +44,7 @@ resource "aws_apigatewayv2_route" "api" {
   api_id             = aws_apigatewayv2_api.api.id
   route_key          = "${var.routes[count.index].method} ${var.routes[count.index].path}"
   target             = "integrations/${aws_apigatewayv2_integration.api[count.index].id}"
+  authorizer_id      = aws_apigatewayv2_authorizer.api[0].id
   authorization_type = var.routes[count.index].authorization_type == null ? "NONE" : var.routes[count.index].authorization_type
 }
 
