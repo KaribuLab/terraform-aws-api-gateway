@@ -19,8 +19,9 @@ resource "aws_apigatewayv2_domain_name" "api" {
 }
 
 resource "aws_apigatewayv2_api_mapping" "api" {
+  count       = var.custom_domain == null ? 0 : 1
   api_id      = aws_apigatewayv2_api.api.id
-  domain_name = aws_apigatewayv2_domain_name.api[0].domain_name
+  domain_name = aws_apigatewayv2_domain_name.api[count.index].domain_name
   stage       = aws_apigatewayv2_stage.api.name
 }
 
