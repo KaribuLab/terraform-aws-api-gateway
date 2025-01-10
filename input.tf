@@ -42,3 +42,15 @@ variable "protocol_type" {
   default     = "HTTP"
 
 }
+
+variable "custom_domain" {
+  type = object({
+    name            = string
+    certificate_arn = string
+    endpoint_type   = string
+    security_policy = string
+  })
+  description = "Custom domain"
+  default     = null
+
+}

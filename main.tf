@@ -8,6 +8,22 @@ resource "aws_apigatewayv2_api" "api" {
   tags          = var.common_tags
 }
 
+resource "aws_apigatewayv2_domain_name" "api" {
+  count       = var.custom_domain == null ? 0 : 1
+  domain_name = var.custom_domain.name
+  domain_name_configuration {
+    certificate_arn = var.custom_domain.certificate_arn
+    endpoint_type   = var.custom_domain.endpoint_type
+    security_policy = var.custom_domain.security_policy
+  }
+}
+
+resource "aws_apigatewayv2_api_mapping" "api" {
+  api_id      = aws_apigatewayv2_api.api.id
+  domain_name = aws_apigatewayv2_domain_name.api[0].domain_name
+  stage       = aws_apigatewayv2_stage.api.name
+}
+
 resource "aws_apigatewayv2_authorizer" "api" {
   count            = length(local.jwt_authorizer)
   api_id           = aws_apigatewayv2_api.api.id
