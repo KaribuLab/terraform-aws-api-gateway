@@ -69,7 +69,7 @@ resource "aws_apigatewayv2_route" "api" {
 resource "aws_lambda_permission" "api" {
   count         = length(var.routes)
   action        = "lambda:InvokeFunction"
-  function_name = var.routes[count.index].function_name
+  function_name = var.routes[count.index].function_qualifier == null ? data.aws_lambda_function.function[count.index].function_name : "${data.aws_lambda_function.function[count.index].function_name}:${var.routes[count.index].function_qualifier}"
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_apigatewayv2_api.api.execution_arn}/*/*"
 }
