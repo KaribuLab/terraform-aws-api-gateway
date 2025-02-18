@@ -47,6 +47,7 @@ resource "aws_apigatewayv2_stage" "api" {
 data "aws_lambda_function" "function" {
   count         = length(var.routes)
   function_name = var.routes[count.index].function_name
+  qualifier     = var.routes[count.index].function_qualifier == null ? "$LATEST" : var.routes[count.index].function_qualifier
 }
 
 resource "aws_apigatewayv2_integration" "api" {

@@ -30,6 +30,7 @@ This module creates a straightforward API Gateway v2 Proxy that trigger a Lambda
 | method             | string           | HTTP method to serve request | yes      |
 | authorization_type | optional(string) | Authorization type           | no       |
 | function_name      | string           | Lambda function name         | yes      |
+| function_qualifier | string           | Lambda function qualifier    | no       |
 
 ### Custom Domain
 

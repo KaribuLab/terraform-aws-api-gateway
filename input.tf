@@ -27,6 +27,7 @@ variable "routes" {
     method             = string
     authorization_type = optional(string)
     function_name      = string
+    function_qualifier = optional(string)
   }))
   description = "API Gateway routes"
 }
