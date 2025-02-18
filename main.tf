@@ -53,7 +53,7 @@ data "aws_lambda_function" "function" {
 resource "aws_apigatewayv2_integration" "api" {
   count            = length(var.routes)
   api_id           = aws_apigatewayv2_api.api.id
-  integration_uri  = data.aws_lambda_function.function[count.index].invoke_arn
+  integration_uri  = var.routes[count.index].function_qualifier == null ? data.aws_lambda_function.function[count.index].invoke_arn : data.aws_lambda_function.function[count.index].qualified_invoke_arn
   integration_type = "AWS_PROXY"
 }
 
