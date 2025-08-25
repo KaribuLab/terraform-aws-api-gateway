@@ -20,18 +20,6 @@ variable "jwt_authorizer" {
   default     = null
 }
 
-
-variable "routes" {
-  type = list(object({
-    path               = string
-    method             = string
-    authorization_type = optional(string)
-    function_name      = string
-    function_qualifier = optional(string)
-  }))
-  description = "API Gateway routes"
-}
-
 variable "common_tags" {
   type        = map(string)
   description = "Common tags"
