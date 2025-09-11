@@ -38,13 +38,14 @@ Este módulo crea un API Gateway v2 HTTP con soporte para autenticación JWT, do
 
 ### Outputs
 
-| Name                      | Type         | Description                  |
-| ------------------------- | ------------ | ---------------------------- |
-| api_endpoint              | string       | The API endpoint URL         |
-| api_name                  | string       | The API Gateway name         |
-| api_gateway_id            | string       | The API Gateway ID           |
-| api_gateway_execution_arn | string       | The API Gateway execution ARN |
-| api_gateway_authorizer_ids| list(string) | The API Gateway authorizer IDs |
+| Name                           | Type         | Description                    |
+| ------------------------------ | ------------ | ------------------------------ |
+| api_endpoint                   | string       | The API endpoint URL           |
+| api_name                       | string       | The API Gateway name           |
+| api_gateway_id                 | string       | The API Gateway ID             |
+| api_gateway_api_full_endpoint  | string       | The API Gateway full endpoint  |
+| api_gateway_execution_arn      | string       | The API Gateway execution ARN  |
+| api_gateway_authorizer_ids     | list(string) | The API Gateway authorizer IDs |
 
 ## Submódulo function-route
 

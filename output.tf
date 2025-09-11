@@ -13,6 +13,11 @@ output api_gateway_id {
   description = "The API Gateway ID"
 }
 
+output api_gateway_api_full_endpoint {
+  value       = "${aws_apigatewayv2_api.api.api_endpoint}/${aws_apigatewayv2_stage.api.name}"
+  description = "The API Gateway endpoint"
+}
+
 output "api_gateway_execution_arn" {
   value       = aws_apigatewayv2_api.api.execution_arn
   description = "The API Gateway execution ARN"
